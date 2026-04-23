@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "SafePulse",
+    "slug": "safepulse-citizen",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0f172a"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.safepulse.citizen",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "SafePulse needs your location to send help to you during emergencies.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "SafePulse needs your location to send help to you during emergencies.",
+        "UIBackgroundModes": ["location", "fetch", "remote-notification"]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0f172a"
+      },
+      "package": "com.safepulse.citizen",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "SafePulse needs your location to send help during emergencies."
+        }
+      ]
+    ]
+  }
+}

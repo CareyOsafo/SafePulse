@@ -1,0 +1,103 @@
+import { IncidentsService } from './incidents.service';
+import { AuthenticatedUser } from '../../auth/auth.service';
+import { CreateIncidentDto, UpdateLocationDto } from './dto/incident.dto';
+export declare class IncidentsController {
+    private readonly incidentsService;
+    constructor(incidentsService: IncidentsService);
+    createIncident(user: AuthenticatedUser, dto: CreateIncidentDto, idempotencyKey?: string): Promise<{
+        id: any;
+        callerPhone: any;
+        callerName: any;
+        callerId: any;
+        emergencyType: any;
+        status: any;
+        priority: any;
+        intakeSource: any;
+        locationSource: any;
+        locationConfidence: any;
+        latitude: number | null;
+        longitude: number | null;
+        accuracy: number | null;
+        landmark: any;
+        trackingToken: any;
+        trackingExpiresAt: any;
+        callerKycStatus: any;
+        callerVerified: any;
+        agencyId: any;
+        notes: any;
+        createdAt: any;
+        updatedAt: any;
+        acknowledgedAt: any;
+        resolvedAt: any;
+    } | {
+        id: any;
+        status: any;
+        trackingToken: any;
+        emergencyType: any;
+        createdAt: any;
+    }>;
+    updateLocation(user: AuthenticatedUser, incidentId: string, dto: UpdateLocationDto): Promise<{
+        success: boolean;
+        timestamp: Date;
+    }>;
+    cancelIncident(user: AuthenticatedUser, incidentId: string): Promise<{
+        success: boolean;
+        status: import("@safepulse/shared").IncidentStatus;
+    }>;
+    markSafe(user: AuthenticatedUser, incidentId: string): Promise<{
+        success: boolean;
+        status: import("@safepulse/shared").IncidentStatus;
+    }>;
+    getIncident(user: AuthenticatedUser, incidentId: string): Promise<{
+        id: any;
+        callerPhone: any;
+        callerName: any;
+        callerId: any;
+        emergencyType: any;
+        status: any;
+        priority: any;
+        intakeSource: any;
+        locationSource: any;
+        locationConfidence: any;
+        latitude: number | null;
+        longitude: number | null;
+        accuracy: number | null;
+        landmark: any;
+        trackingToken: any;
+        trackingExpiresAt: any;
+        callerKycStatus: any;
+        callerVerified: any;
+        agencyId: any;
+        notes: any;
+        createdAt: any;
+        updatedAt: any;
+        acknowledgedAt: any;
+        resolvedAt: any;
+    }>;
+    getUserIncidents(user: AuthenticatedUser): Promise<{
+        id: any;
+        callerPhone: any;
+        callerName: any;
+        callerId: any;
+        emergencyType: any;
+        status: any;
+        priority: any;
+        intakeSource: any;
+        locationSource: any;
+        locationConfidence: any;
+        latitude: number | null;
+        longitude: number | null;
+        accuracy: number | null;
+        landmark: any;
+        trackingToken: any;
+        trackingExpiresAt: any;
+        callerKycStatus: any;
+        callerVerified: any;
+        agencyId: any;
+        notes: any;
+        createdAt: any;
+        updatedAt: any;
+        acknowledgedAt: any;
+        resolvedAt: any;
+    }[]>;
+}

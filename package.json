@@ -1,0 +1,30 @@
+{
+  "name": "safepulse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SafePulse Emergency Response System for Ghana",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:dispatcher\" \"npm run dev:unit\"",
+    "dev:dispatcher": "npm --workspace=@safepulse/dispatcher-web run dev",
+    "dev:unit": "npm --workspace=@safepulse/unit-portal-web run dev",
+    "dev:api": "npm --workspace=@safepulse/api run start:dev",
+
+    "build": "npm run build -w @safepulse/shared && npm run build -ws --if-present",
+    "build:shared": "npm run build -w @safepulse/shared",
+    "lint": "npm run lint -ws --if-present",
+    "test": "npm run test -ws --if-present",
+    "db:migrate": "for f in migrations/*.sql; do psql $DATABASE_URL -f $f; done",
+    "db:seed": "psql $DATABASE_URL -f migrations/014_seed_data.sql",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

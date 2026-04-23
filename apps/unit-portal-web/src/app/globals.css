@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-ops-bg text-gray-100 antialiased;
+}
+
+/* Panel resizer — horizontal (columns) */
+.panel-resizer {
+  @apply bg-ops-border hover:bg-blue-500 active:bg-blue-500 transition-colors cursor-col-resize;
+  width: 4px;
+}
+
+/* Panel resizer — vertical (rows) */
+.panel-resizer-vertical {
+  @apply bg-ops-border hover:bg-blue-500 active:bg-blue-500 transition-colors cursor-row-resize;
+  height: 4px;
+}
+
+/* PWA safe area */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}

@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ops-bg: #0a0e14;
+  --ops-surface: #111827;
+  --ops-surface-raised: #1a2332;
+  --ops-border: #2d3748;
+}
+
+body {
+  @apply bg-ops-bg text-gray-100 antialiased;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-ops-surface;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-ops-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-ops-border-light;
+}
+
+/* Leaflet map overrides for dark theme */
+.leaflet-container {
+  background: #0a0e14;
+}
+
+.leaflet-tile-pane {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.leaflet-control-zoom a {
+  @apply bg-ops-surface-raised text-gray-200 border-ops-border;
+}
+
+.leaflet-control-zoom a:hover {
+  @apply bg-ops-surface text-white;
+}
+
+/* Status pulse animation */
+.status-pulse {
+  @apply relative;
+}
+
+.status-pulse::before {
+  content: '';
+  @apply absolute inset-0 rounded-full animate-ping-slow opacity-75;
+}
+
+/* Panel resizer — horizontal (columns) */
+.panel-resizer {
+  @apply bg-ops-border hover:bg-blue-500 active:bg-blue-500 transition-colors cursor-col-resize;
+  width: 4px;
+}
+
+/* Panel resizer — vertical (rows) */
+.panel-resizer-vertical {
+  @apply bg-ops-border hover:bg-blue-500 active:bg-blue-500 transition-colors cursor-row-resize;
+  height: 4px;
+}
+
+/* Incident card hover effect */
+.incident-card {
+  @apply transition-all duration-200;
+}
+
+.incident-card:hover {
+  @apply bg-ops-surface-raised border-blue-500/50;
+}
+
+.incident-card.selected {
+  @apply bg-blue-900/30 border-blue-500;
+}
+
+/* Timer styling */
+.timer {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Map marker pulse */
+@keyframes marker-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+.marker-pulse {
+  animation: marker-pulse 2s ease-in-out infinite;
+}
